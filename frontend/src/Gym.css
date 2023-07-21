@@ -1,0 +1,324 @@
+@import url(//fonts.googleapis.com/css?family=Open+Sans);
+
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.gym-screen-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+}
+
+.header {
+    display: grid;
+    grid-template-columns: 12% auto;
+    width: 100%;
+    height: 85px;
+    box-shadow: -10px 12px 12px 0px #d3d3d3;
+}
+
+.header-logo-container {
+    display: flex;
+    height: 60%;
+    width: 160px;
+    align-self: center;
+    align-items: center;
+    font-size: 22px;
+    font-weight: bolder;
+    color: black;
+    grid-column-start: 2;
+    text-decoration: none;
+    justify-content: center;
+}
+
+.gym-information-container {
+    display: grid;
+    grid-template-columns: 10% 26% 20% 12% 20% auto;
+    grid-template-rows: 15% 10% 12.5% 12.5% 25% 25%; 
+    height: 60vh;
+    width: 70vw;
+    align-self: center;
+    text-align:start;
+    margin-top: 5vh;
+
+}
+
+.gym-name {
+    color: black;
+    font-size: 48px;
+    font-weight: bold;
+    align-self: center;
+    grid-column-start: 1;
+    grid-column-end: 6;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+.gym-location {
+    color: black;
+    font-size: 18px;
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 3;
+
+}
+
+.gym-rating-overall-container {
+    display: flex;
+    flex-direction: column;
+    color: black;
+    font-size: 18px;
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row-start: 4;
+    grid-row-end: 4.5;
+}
+
+.gym-rating-overall {
+    font-size: 75px;
+    font-weight: bold;
+}
+
+
+
+.rating-icons {
+    margin-right: 0.5rem;
+}
+.rating-text {
+    width: 100%;
+}
+
+.gym-rating-number-container {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.gym-rating-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(234, 234, 234);
+    font-size: 18px;
+    font-weight: bold;
+    height: 3.5rem;
+    width: 3.5rem;
+    margin-right: 2rem;
+}
+
+.gym-rating-machines {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: black;
+    font-size: 22px;
+    width: 20rem;
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 4;
+    grid-row-end: 4;
+}
+
+
+.gym-rating-freeweights {
+    display: flex;
+    /* flex-direction: row; */
+    align-items: center;
+    color: black;
+    font-size: 22px;
+    width: 20rem;
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 5;
+    grid-row-end: 5;
+}
+
+.gym-rating-price {
+    display: flex;
+    /* flex-direction: row; */
+    align-items: center;
+    color: black;
+    font-size: 22px;
+    width: 20rem;
+    grid-column-start: 5;
+    grid-column-end: 6;
+    grid-row-start: 4;
+    grid-row-end: 4;
+}
+
+.gym-rating-location {
+    display: flex;
+    /* flex-direction: row; */
+    align-items: center;
+    color: black;
+    font-size: 22px;
+    width: 20rem;
+    grid-column-start: 5;
+    grid-column-end: 6;
+    grid-row-start: 5;
+    grid-row-end: 5;
+}
+
+.under-gym-information-shadow {
+    width: 120vw;
+    height: 3rem;
+    box-shadow: -10px -12px 12px 0px #d3d3d3;
+}
+
+.above-ratings-list-bar {
+    display: flex;
+    align-self: center;
+    height: 5vh;
+    width: 50vw;
+    margin-top: 1rem;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 24px;
+    color: black;
+    font-weight: bold;
+}
+
+.ratings-list-wrapper {
+    height: 20vh;
+    width: 80vw;
+    align-self: center;
+    text-align:start;
+    margin-top: 5vh;
+}
+
+.ratings-list {
+    display: flex;
+    /* background-color: blue; */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.rating-item-container {
+    display: grid;
+    width: 50vw;
+    height: 42vh;
+    background-color: rgb(234, 234, 234);
+    grid-template-columns: 15% 5% 35% 35% auto;
+    grid-template-rows: 5% 45% 22% 22% auto ; 
+    border-radius: 2%;
+    box-shadow: 2px 2px 10px 0px #616161;
+    margin-bottom: 2rem;
+}
+
+.rating-rate-container {
+    display: flex;
+    flex-direction: column;
+    height: 5rem;
+    width: 7rem;
+    font-size: 14px;
+    /* font-weight: bold; */
+    color: black;
+    align-self: center;
+    justify-self: center;
+    align-items: center;
+    justify-content: center;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+.rating-rate {
+    font-size: 36px;
+    font-weight: bold;
+    color: black;
+    align-content: center;
+    justify-self: center;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+.rating-body {
+    font-size: 20px;
+    color: black;
+    align-self: center;
+    justify-self: center;
+    grid-column-start: 3;
+    grid-column-end: 5;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+
+.rating-rating-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(0, 0, 0);
+    font-weight: bold;
+    color: white;
+    height: 3rem;
+    width: 3rem;
+}
+
+.rating-machines {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: black;
+    font-size: 18px;
+    width: 15rem;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 3;
+    grid-row-end: 3;
+}
+
+.rating-freeweights {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: black;
+    font-size: 18px;
+    width: 15rem;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 4;
+    grid-row-end: 4;
+}
+
+.rating-price {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: black;
+    font-size: 18px;
+    width: 15rem;
+    grid-column-start: 4;
+    grid-column-end: 4;
+    grid-row-start: 3;
+    grid-row-end: 3;
+}
+
+.rating-location {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: black;
+    font-size: 18px;
+    width: 15rem;
+    grid-column-start: 4;
+    grid-column-end: 4;
+    grid-row-start: 4;
+    grid-row-end: 4;
+}
+
+.more-ratings-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    height: 10vh;   
+    color: black;
+    font-size: 18px;
+}

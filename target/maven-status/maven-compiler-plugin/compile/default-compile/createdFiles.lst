@@ -1,0 +1,9 @@
+dev\oconnor\gyms\RatingRepository.class
+dev\oconnor\gyms\GymController.class
+dev\oconnor\gyms\Gym.class
+dev\oconnor\gyms\RatingService.class
+dev\oconnor\gyms\Rating.class
+dev\oconnor\gyms\GymsApplication.class
+dev\oconnor\gyms\GymService.class
+dev\oconnor\gyms\RatingController.class
+dev\oconnor\gyms\GymRepository.class

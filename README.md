@@ -1,4 +1,4 @@
-# Rate My Gym | [link]:https://ratemygym.onrender.com
+# Rate My Gym | [Click here to visit the site](https://ratemygym.onrender.com)
 
 ## Description
 Full stack web application built using Java Spring Boot, React, and MongoDB. Rate My Gym allows the user to search any gym that is found in the Google Places API and see how others have rated the gym, and also rate it themselves! I'm creating this app because I believe there should be a way for people to see honest (anonymous) reviews about a gym before going/spending their money. This app also serves as a way for gyms to take in anonymous recommendations on things they can do better, written by their community.

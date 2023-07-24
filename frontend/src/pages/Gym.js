@@ -7,7 +7,10 @@ import {
   faDollarSign,
   faDumbbell,
   faGear,
+  faHandSparkles,
   faLocationArrow,
+  faSun,
+  faUserTie,
 } from "@fortawesome/free-solid-svg-icons";
 import Button from "@mui/material/Button";
 
@@ -18,19 +21,22 @@ const Gym = () => {
   const [avgRating, setAvgRating] = useState("0.0");
   const [machinesRating, setMachinesRating] = useState("0.0");
   const [freeWeightsRating, setFreeWeightsRating] = useState("0.0");
-  const [priceRating, setpriceRating] = useState("0.0");
-  const [locationRating, setlocationRating] = useState("0.0");
+  const [atmosphereRating, setAtmosphereRating] = useState("0.0");
+  const [cleanlinessRating, setCleanlinessRating] = useState("0.0");
+  const [staffRating, setStaffRating] = useState("0.0");
+  const [priceRating, setPriceRating] = useState("0.0");
+
   const [visible, setVisible] = useState(3);
   const navigate = useNavigate();
-  const state = useLocation();
 
   useEffect(() => {
     const getGym = async () => {
       try {
-        const response = await api.get("/api/v1/gyms/" + state["state"]);
+        let id = window.location.pathname.substring(5);
+        const response = await api.get("/api/v1/gyms/" + id);
         setGym(response.data);
-        setRatings(response.data.ratings);
-        setAverageGymRatings(response);
+        setRatings(response.data.ratings.reverse());
+        await setAverageGymRatings(response);
       } catch (error) {
         console.log(error.response.data);
       }
@@ -40,22 +46,28 @@ const Gym = () => {
     setIsLoading(false);
   }, []);
 
-  const setAverageGymRatings = (response) => {
+  const setAverageGymRatings = async (response) => {
     var rateTotal = 0.0;
     var machinesTotal = 0.0;
     var freeWeightsTotal = 0.0;
+    var atmosphereTotal = 0.0;
+    var cleanlinessTotal = 0.0;
+    var staffTotal = 0.0;
     var priceTotal = 0.0;
-    var locationTotal = 0.0;
     var count = 0;
     response.data.ratings.forEach(function (item) {
+      console.log(item);
       rateTotal += parseFloat(item.rate);
       machinesTotal += parseFloat(item.machinesRating);
       freeWeightsTotal += parseFloat(item.freeWeightsRating);
+      atmosphereTotal += parseFloat(item.atmosphereRating);
+      cleanlinessTotal += parseFloat(item.cleanlinessRating);
+      staffTotal += parseFloat(item.staffRating);
       priceTotal += parseFloat(item.priceRating);
-      locationTotal += parseFloat(item.locationRating);
       count++;
     });
     if (count > 0) {
+      console.log(machinesTotal);
       setAvgRating((Math.round((rateTotal / count) * 10) / 10).toFixed(1));
       setMachinesRating(
         (Math.round((machinesTotal / count) * 10) / 10).toFixed(1)
@@ -63,16 +75,20 @@ const Gym = () => {
       setFreeWeightsRating(
         (Math.round((freeWeightsTotal / count) * 10) / 10).toFixed(1)
       );
-      setpriceRating((Math.round((priceTotal / count) * 10) / 10).toFixed(1));
-      setlocationRating(
-        (Math.round((locationTotal / count) * 10) / 10).toFixed(1)
+      setAtmosphereRating(
+        (Math.round((atmosphereTotal / count) * 10) / 10).toFixed(1)
       );
+      setCleanlinessRating(
+        (Math.round((cleanlinessTotal / count) * 10) / 10).toFixed(1)
+      );
+      setStaffRating((Math.round((staffTotal / count) * 10) / 10).toFixed(1));
+      setPriceRating((Math.round((priceTotal / count) * 10) / 10).toFixed(1));
     }
   };
 
   const handleCreateRating = () => {
     navigate("/add-rating/" + gym.gymId, {
-      state: gym.gymId,
+      state: [gym.name, gym.location],
     });
   };
 
@@ -113,18 +129,32 @@ const Gym = () => {
             <div className="gym-rating-number">{freeWeightsRating}</div>
           </div>
         </div>
+        <div className="gym-rating-atmosphere">
+          <FontAwesomeIcon className="rating-icons" icon={faSun} />{" "}
+          <text className="rating-text">Atmosphere</text>
+          <div className="gym-rating-number-container">
+            <div className="gym-rating-number">{atmosphereRating}</div>
+          </div>
+        </div>
+        <div className="gym-rating-cleanliness">
+          <FontAwesomeIcon className="rating-icons" icon={faHandSparkles} />{" "}
+          <text className="rating-text">Cleanliness</text>
+          <div className="gym-rating-number-container">
+            <div className="gym-rating-number">{cleanlinessRating}</div>
+          </div>
+        </div>
+        <div className="gym-rating-staff">
+          <FontAwesomeIcon className="rating-icons" icon={faUserTie} />{" "}
+          <text className="rating-text">Staff</text>
+          <div className="gym-rating-number-container">
+            <div className="gym-rating-number">{staffRating}</div>
+          </div>
+        </div>
         <div className="gym-rating-price">
           <FontAwesomeIcon className="rating-icons" icon={faDollarSign} />{" "}
           <text className="rating-text">Price</text>
           <div className="gym-rating-number-container">
             <div className="gym-rating-number">{priceRating}</div>
-          </div>
-        </div>
-        <div className="gym-rating-location">
-          <FontAwesomeIcon className="rating-icons" icon={faLocationArrow} />{" "}
-          <text className="rating-text">Location</text>
-          <div className="gym-rating-number-container">
-            <div className="gym-rating-number">{locationRating}</div>
           </div>
         </div>
       </div>
@@ -171,24 +201,42 @@ const Gym = () => {
                   </div>
                 </div>
               </div>
+              <div className="rating-atmosphere">
+                <FontAwesomeIcon className="rating-icons" icon={faSun} />{" "}
+                <text className="rating-text">Atmosphere</text>
+                <div className="gym-rating-number-container">
+                  <div className="rating-rating-number">
+                    {rating.atmosphereRating}
+                  </div>
+                </div>
+              </div>
+              <div className="rating-cleanliness">
+                <FontAwesomeIcon
+                  className="rating-icons"
+                  icon={faHandSparkles}
+                />{" "}
+                <text className="rating-text">Cleanliness</text>
+                <div className="gym-rating-number-container">
+                  <div className="rating-rating-number">
+                    {rating.cleanlinessRating}
+                  </div>
+                </div>
+              </div>
+              <div className="rating-staff">
+                <FontAwesomeIcon className="rating-icons" icon={faUserTie} />{" "}
+                <text className="rating-text">Staff</text>
+                <div className="gym-rating-number-container">
+                  <div className="rating-rating-number">
+                    {rating.staffRating}
+                  </div>
+                </div>
+              </div>
               <div className="rating-price">
                 <FontAwesomeIcon className="rating-icons" icon={faDollarSign} />{" "}
                 <text className="rating-text">Price</text>
                 <div className="gym-rating-number-container">
                   <div className="rating-rating-number">
                     {rating.priceRating}
-                  </div>
-                </div>
-              </div>
-              <div className="rating-location">
-                <FontAwesomeIcon
-                  className="rating-icons"
-                  icon={faLocationArrow}
-                />{" "}
-                <text className="rating-text">Location</text>
-                <div className="gym-rating-number-container">
-                  <div className="rating-rating-number">
-                    {rating.locationRating}
                   </div>
                 </div>
               </div>

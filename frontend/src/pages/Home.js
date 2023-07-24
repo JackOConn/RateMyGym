@@ -6,11 +6,13 @@ import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [selectedGym, setSelectedGym] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     const checkIfGymExistsInDB = async () => {
       try {
+        setIsLoading(true);
         const response = await api.get(
           "/api/v1/gyms/" + selectedGym["value"].place_id
         );
@@ -24,6 +26,7 @@ const Home = () => {
               selectedGym["value"]["structured_formatting"].secondary_text,
           });
         }
+        setIsLoading(false);
         navigate("/gym/" + selectedGym["value"].place_id, {
           state: selectedGym["value"].place_id,
         });
@@ -33,11 +36,8 @@ const Home = () => {
     };
 
     checkIfGymExistsInDB();
+    setIsLoading(false);
   }, [selectedGym]);
-
-  useEffect(() => {
-    setSelectedGym([]);
-  }, []);
 
   const customStyles = {
     option: (defaultStyles) => ({
@@ -66,7 +66,11 @@ const Home = () => {
       <div className="background-image">
         <div className="image-overlay">
           <div className="logo-text">
-            <text>Enter a gym to get started</text>
+            {isLoading ? (
+              <text>Loading...</text>
+            ) : (
+              <text>Enter a gym to get started</text>
+            )}
           </div>
           <div className="google-search">
             <GooglePlacesAutocomplete

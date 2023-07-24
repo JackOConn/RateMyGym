@@ -38,8 +38,25 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 10vh;
+    margin-top: 5vh;
     justify-content: center;
+}
+
+.create-rating-gym-name {
+    width: 90%;
+    color: black;
+    font-size: 52px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.create-rating-gym-location {
+    width: 90%;
+    color: black;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
 .rating {
@@ -52,7 +69,7 @@
     width: 50vw;
     background-color: rgb(234, 234, 234);
     margin-bottom: 1rem;
-    box-shadow: 1px 1px 3px 0px #616161;
+    box-shadow: 1px 1px 6px 0px #616161;
 }
 
 .text-area {
@@ -72,7 +89,17 @@
     color: black;
     font-weight: bold;
     background-color: rgb(234, 234, 234);
-    box-shadow: 1px 1px 3px 0px #616161;
+    box-shadow: 1px 1px 6px 0px #616161;
+}
+
+@media screen and (max-width:800px) {
+    .rating {
+        width: 80vw;
+    }
+
+    .submit-container {
+        width: 80vw;
+    }
 }
 
 

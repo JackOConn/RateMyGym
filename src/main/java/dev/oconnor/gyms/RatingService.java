@@ -9,25 +9,43 @@ import org.springframework.stereotype.Service;
 @Service
 public class RatingService {
 
-    @Autowired
-    private RatingRepository ratingRepository;
+  @Autowired
+  private RatingRepository ratingRepository;
 
-    @Autowired
-    private MongoTemplate mongoTemplate;
-    
-    public Rating createRating(String body, String machinesRating, String freeWeightsRating, String priceRating,
-    String locationRating, String gymId, String ip_address) {
-        
-        Rating rating = ratingRepository.insert(new Rating(body, machinesRating, freeWeightsRating, priceRating, locationRating, ip_address));
+  @Autowired
+  private MongoTemplate mongoTemplate;
 
-        //uses template to update the gym with a new rating
-        mongoTemplate.update(Gym.class)
-            .matching(Criteria.where("gymId").is(gymId))
-            .apply(new Update().push("ratings").value(rating))
-            .first();
+  public Rating createRating(
+    String body,
+    String machinesRating,
+    String freeWeightsRating,
+    String atmosphereRating,
+    String cleanlinessRating,
+    String staffRating,
+    String priceRating,
+    String gymId,
+    String ip_address
+  ) {
+    Rating rating = ratingRepository.insert(
+      new Rating(
+        body,
+        machinesRating,
+        freeWeightsRating,
+        atmosphereRating,
+        cleanlinessRating,
+        staffRating,
+        priceRating,
+        ip_address
+      )
+    );
 
-        return rating;
+    //uses template to update the gym with a new rating
+    mongoTemplate
+      .update(Gym.class)
+      .matching(Criteria.where("gymId").is(gymId))
+      .apply(new Update().push("ratings").value(rating))
+      .first();
 
-    }
-
+    return rating;
+  }
 }

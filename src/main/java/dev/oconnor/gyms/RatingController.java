@@ -24,25 +24,30 @@ public class RatingController {
   private GymRepository gymRepository;
 
   @PostMapping
-  public ResponseEntity<Rating> createRating(@RequestBody Map<String, String> payload,HttpServletRequest request) {
+  public ResponseEntity<Rating> createRating(
+    @RequestBody Map<String, String> payload,
+    HttpServletRequest request
+  ) {
     //check if this user has posted a rating for this gym already
-    Optional<Gym> gym = gymRepository.findByGymId(payload.get("gymId"));
-    if (gym.isPresent()) {
-        Gym newGym = gym.get();
-      for (Rating rating : newGym.getRatings()) {
-        if (rating.getIp_address().equals(request.getRemoteAddr())) {
-            return null;
-        }
-      }
-    }
+    // Optional<Gym> gym = gymRepository.findByGymId(payload.get("gymId"));
+    // if (gym.isPresent()) {
+    //   Gym newGym = gym.get();
+    //   for (Rating rating : newGym.getRatings()) {
+    //     if (rating.getIp_address().equals(request.getRemoteAddr())) {
+    //       return null;
+    //     }
+    //   }
+    // }
 
     return new ResponseEntity<Rating>(
       ratingService.createRating(
         payload.get("ratingBody"),
         payload.get("machinesRating"),
         payload.get("freeWeightsRating"),
+        payload.get("atmosphereRating"),
+        payload.get("cleanlinessRating"),
+        payload.get("staffRating"),
         payload.get("priceRating"),
-        payload.get("locationRating"),
         payload.get("gymId"),
         request.getRemoteAddr()
       ),

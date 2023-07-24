@@ -9,7 +9,7 @@ import {
   faGear,
   faLocationArrow,
 } from "@fortawesome/free-solid-svg-icons";
-import { Button } from "react-bootstrap";
+import Button from "@mui/material/Button";
 
 const Gym = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -137,7 +137,8 @@ const Gym = () => {
         )}
         <Button
           onClick={() => handleCreateRating(gym.place_id)}
-          variant="success"
+          variant="contained"
+          color="success"
           size="lg"
         >
           Rate this gym

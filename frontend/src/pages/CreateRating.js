@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import api from "../api/axiosConfig.js";
 import { useLocation, useNavigate } from "react-router-dom";
 import Rating from "@mui/material/Rating";
+import Button from "@mui/material/Button";
 import "../CreateRating.css";
-import { Button } from "react-bootstrap";
 
 const CreateRating = () => {
   const [charCount, setCharCount] = useState(0);
@@ -129,7 +129,8 @@ const CreateRating = () => {
               <Button
                 disabled={!isValid}
                 type="submit"
-                variant="success"
+                variant="contained"
+                color="success"
                 size="lg"
               >
                 Submit

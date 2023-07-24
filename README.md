@@ -7,4 +7,4 @@ Full stack web application built using Spring Boot, React, and MongoDB. Rate My 
 This application is hosted using the free option with render.com, so after a little while of the service being unused, it spins down. So, the first time loading the site may take a few minutes. Also, when selecting a gym or creating a rating, it may take a little while for the api requests to process.
 
 ## Notice
-This application is still a work in progress! The UI isn't fully fledged out, and there may still be plenty of bugs. 
+This application is still a work in progress and there may still be plenty of bugs. 

@@ -8,3 +8,8 @@ This application is hosted using the free option with render.com, so it spins do
 
 ## Notice
 This application is still a work in progress and there may still be plenty of bugs. 
+
+## Demo
+https://github.com/JackOConn/RateMyGym/assets/47901485/d6a09235-a9b3-4fc2-ac55-06f3cf4873da
+
+

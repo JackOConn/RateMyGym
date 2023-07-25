@@ -33,6 +33,7 @@ public class RatingController {
     if (gym.isPresent()) {
       Gym newGym = gym.get();
       for (Rating rating : newGym.getRatings()) {
+        System.out.println(request.getHeader("X-Forwarded-For"));
         if (rating.getIp_address().equals(request.getHeader("X-Forwarded-For"))) {
           return null;
         }

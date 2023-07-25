@@ -28,16 +28,16 @@ public class RatingController {
     @RequestBody Map<String, String> payload,
     HttpServletRequest request
   ) {
-    //check if this user has posted a rating for this gym already
-    // Optional<Gym> gym = gymRepository.findByGymId(payload.get("gymId"));
-    // if (gym.isPresent()) {
-    //   Gym newGym = gym.get();
-    //   for (Rating rating : newGym.getRatings()) {
-    //     if (rating.getIp_address().equals(request.getRemoteAddr())) {
-    //       return null;
-    //     }
-    //   }
-    // }
+    // check if this user has posted a rating for this gym already
+    Optional<Gym> gym = gymRepository.findByGymId(payload.get("gymId"));
+    if (gym.isPresent()) {
+      Gym newGym = gym.get();
+      for (Rating rating : newGym.getRatings()) {
+        if (rating.getIp_address().equals(request.getHeader("X-Forwarded-For"))) {
+          return null;
+        }
+      }
+    }
 
     return new ResponseEntity<Rating>(
       ratingService.createRating(
@@ -49,7 +49,7 @@ public class RatingController {
         payload.get("staffRating"),
         payload.get("priceRating"),
         payload.get("gymId"),
-        request.getRemoteAddr()
+        request.getHeader("X-Forwarded-For")
       ),
       HttpStatus.CREATED
     );

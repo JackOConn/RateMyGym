@@ -34,7 +34,7 @@ public class RatingController {
       Gym newGym = gym.get();
       for (Rating rating : newGym.getRatings()) {
         System.out.println(request.getHeader("X-Forwarded-For"));
-        if (rating.getIp_address().equals(request.getHeader("X-Forwarded-For"))) {
+        if (rating.getIp_address().equals(request.getRemoteAddr())) {
           return null;
         }
       }
@@ -50,7 +50,7 @@ public class RatingController {
         payload.get("staffRating"),
         payload.get("priceRating"),
         payload.get("gymId"),
-        request.getHeader("X-Forwarded-For")
+        request.getRemoteAddr()
       ),
       HttpStatus.CREATED
     );

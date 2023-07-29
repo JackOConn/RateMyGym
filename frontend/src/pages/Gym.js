@@ -13,6 +13,7 @@ import {
   faUserTie,
 } from "@fortawesome/free-solid-svg-icons";
 import Button from "@mui/material/Button";
+import PageHeader from "../components/PageHeader.js";
 
 const Gym = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -25,6 +26,7 @@ const Gym = () => {
   const [cleanlinessRating, setCleanlinessRating] = useState("0.0");
   const [staffRating, setStaffRating] = useState("0.0");
   const [priceRating, setPriceRating] = useState("0.0");
+  const [theme, setTheme] = useState("");
 
   const [visible, setVisible] = useState(3);
   const navigate = useNavigate();
@@ -96,74 +98,71 @@ const Gym = () => {
     setVisible((prevValue) => prevValue + 3);
   };
 
-  if (isLoading) {
-    return <div></div>;
-  }
+  window.addEventListener("storage", (e) => {
+    setTheme(JSON.parse(localStorage.getItem("theme")) + "-gym");
+  });
+
   return (
-    <div className="gym-screen-wrapper">
-      <div className="header">
-        <a href="/" className="header-logo-container">
-          <text>Rate My Gym</text>
-        </a>
-      </div>
+    <div className="gym-screen-wrapper" id={theme}>
+      <PageHeader></PageHeader>
       <div className="gym-information-container">
-        <div className="gym-name">{gym.name}</div>
-        <div className="gym-location">
+        <div className="gym-name" id={theme}>{gym.name}</div>
+        <div className="gym-location" id={theme}>
           <FontAwesomeIcon icon={faLocationArrow} /> {gym.location}
         </div>
-        <div className="gym-rating-overall-container">
+        <div className="gym-rating-overall-container" id={theme}>
           <div className="gym-rating-overall">{avgRating}</div>
           <text>overall rating</text>
         </div>
         <div className="gym-rating-machines">
-          <FontAwesomeIcon className="rating-icons" icon={faGear} />{" "}
-          <text className="rating-text">Machines</text>
-          <div className="gym-rating-number-container">
-            <div className="gym-rating-number">{machinesRating}</div>
+          <FontAwesomeIcon className="rating-icons" icon={faGear} id={theme}/>{" "}
+          <text className="rating-text" id={theme}>Machines</text>
+          <div className="gym-rating-number-container" id={theme}>
+            <div className="gym-rating-number" id={theme}>{machinesRating}</div>
           </div>
         </div>
         <div className="gym-rating-freeweights">
-          <FontAwesomeIcon className="rating-icons" icon={faDumbbell} />{" "}
-          <text className="rating-text">Free Weights</text>
+          <FontAwesomeIcon className="rating-icons" icon={faDumbbell} id={theme}/>{" "}
+          <text className="rating-text" id={theme}>Free Weights</text>
           <div className="gym-rating-number-container">
-            <div className="gym-rating-number">{freeWeightsRating}</div>
+            <div className="gym-rating-number" id={theme}>{freeWeightsRating}</div>
           </div>
         </div>
         <div className="gym-rating-atmosphere">
-          <FontAwesomeIcon className="rating-icons" icon={faSun} />{" "}
-          <text className="rating-text">Atmosphere</text>
+          <FontAwesomeIcon className="rating-icons" icon={faSun} id={theme}/>{" "}
+          <text className="rating-text" id={theme}>Atmosphere</text>
           <div className="gym-rating-number-container">
-            <div className="gym-rating-number">{atmosphereRating}</div>
+            <div className="gym-rating-number" id={theme}>{atmosphereRating}</div>
           </div>
         </div>
         <div className="gym-rating-cleanliness">
-          <FontAwesomeIcon className="rating-icons" icon={faHandSparkles} />{" "}
-          <text className="rating-text">Cleanliness</text>
+          <FontAwesomeIcon className="rating-icons" icon={faHandSparkles} id={theme}/>{" "}
+          <text className="rating-text" id={theme}>Cleanliness</text>
           <div className="gym-rating-number-container">
-            <div className="gym-rating-number">{cleanlinessRating}</div>
+            <div className="gym-rating-number" id={theme}>{cleanlinessRating}</div>
           </div>
         </div>
         <div className="gym-rating-staff">
-          <FontAwesomeIcon className="rating-icons" icon={faUserTie} />{" "}
-          <text className="rating-text">Staff</text>
+          <FontAwesomeIcon className="rating-icons" icon={faUserTie} id={theme}/>{" "}
+          <text className="rating-text" id={theme}>Staff</text>
           <div className="gym-rating-number-container">
-            <div className="gym-rating-number">{staffRating}</div>
+            <div className="gym-rating-number" id={theme}>{staffRating}</div>
           </div>
         </div>
         <div className="gym-rating-price">
-          <FontAwesomeIcon className="rating-icons" icon={faDollarSign} />{" "}
-          <text className="rating-text">Price</text>
+          <FontAwesomeIcon className="rating-icons" icon={faDollarSign} id={theme}/>{" "}
+          <text className="rating-text" id={theme}>Price</text>
           <div className="gym-rating-number-container">
-            <div className="gym-rating-number">{priceRating}</div>
+            <div className="gym-rating-number" id={theme}>{priceRating}</div>
           </div>
         </div>
       </div>
-      <div className="under-gym-information-shadow"></div>
+      <div className="under-gym-information-shadow" id={theme}></div>
       <div className="above-ratings-list-bar">
         {ratings.length == 1 ? (
-          <text>1 Rating</text>
+          <text id={theme}>1 Rating</text>
         ) : (
-          <text>{ratings.length} Ratings</text>
+          <text id={theme}>{ratings.length} Ratings</text>
         )}
         <Button
           onClick={() => handleCreateRating(gym.place_id)}
@@ -177,65 +176,65 @@ const Gym = () => {
       <div className="ratings-list-wrapper">
         <div className="ratings-list">
           {ratings.slice(0, visible).map((rating) => (
-            <div className="rating-item-container">
-              <div className="rating-rate-container">
-                <div className="rating-rate">{rating.rate}</div>
+            <div className="rating-item-container" id={theme}>
+              <div className="rating-rate-container" id={theme}>
+                <div className="rating-rate" id={theme}>{rating.rate}</div>
                 <text>overall rating</text>
               </div>
-              <div className="rating-body">{rating.body}</div>
-              <div className="rating-machines">
+              <div className="rating-body" id={theme}>{rating.body}</div>
+              <div className="rating-machines" id={theme}>
                 <FontAwesomeIcon className="rating-icons" icon={faGear} />{" "}
                 <text className="rating-text">Machines</text>
                 <div className="gym-rating-number-container">
-                  <div className="rating-rating-number">
+                  <div className="rating-rating-number" id={theme}>
                     {rating.machinesRating}
                   </div>
                 </div>
               </div>
-              <div className="rating-freeweights">
+              <div className="rating-freeweights" id={theme}>
                 <FontAwesomeIcon className="rating-icons" icon={faDumbbell} />{" "}
                 <text className="rating-text">Free Weights</text>
                 <div className="gym-rating-number-container">
-                  <div className="rating-rating-number">
+                  <div className="rating-rating-number" id={theme}>
                     {rating.freeWeightsRating}
                   </div>
                 </div>
               </div>
-              <div className="rating-atmosphere">
+              <div className="rating-atmosphere" id={theme}>
                 <FontAwesomeIcon className="rating-icons" icon={faSun} />{" "}
                 <text className="rating-text">Atmosphere</text>
                 <div className="gym-rating-number-container">
-                  <div className="rating-rating-number">
+                  <div className="rating-rating-number" id={theme}>
                     {rating.atmosphereRating}
                   </div>
                 </div>
               </div>
-              <div className="rating-cleanliness">
+              <div className="rating-cleanliness" id={theme}>
                 <FontAwesomeIcon
                   className="rating-icons"
                   icon={faHandSparkles}
                 />{" "}
                 <text className="rating-text">Cleanliness</text>
                 <div className="gym-rating-number-container">
-                  <div className="rating-rating-number">
+                  <div className="rating-rating-number" id={theme}>
                     {rating.cleanlinessRating}
                   </div>
                 </div>
               </div>
-              <div className="rating-staff">
+              <div className="rating-staff" id={theme}>
                 <FontAwesomeIcon className="rating-icons" icon={faUserTie} />{" "}
                 <text className="rating-text">Staff</text>
                 <div className="gym-rating-number-container">
-                  <div className="rating-rating-number">
+                  <div className="rating-rating-number" id={theme}>
                     {rating.staffRating}
                   </div>
                 </div>
               </div>
-              <div className="rating-price">
+              <div className="rating-price" id={theme}>
                 <FontAwesomeIcon className="rating-icons" icon={faDollarSign} />{" "}
                 <text className="rating-text">Price</text>
                 <div className="gym-rating-number-container">
-                  <div className="rating-rating-number">
+                  <div className="rating-rating-number" id={theme}>
                     {rating.priceRating}
                   </div>
                 </div>
@@ -251,13 +250,13 @@ const Gym = () => {
               );
             } else if (ratings.length > 0 && visible >= ratings.length) {
               return (
-                <div className="more-ratings-container">
+                <div className="more-ratings-container" id={theme}>
                   <text>There are no more ratings</text>
                 </div>
               );
             } else {
               return (
-                <div className="more-ratings-container">
+                <div className="more-ratings-container" id={theme}>
                   <text>Be the first person to rate this gym!</text>
                 </div>
               );

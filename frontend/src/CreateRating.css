@@ -4,6 +4,33 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+#dark-rating {
+    background-color: rgb(29, 29, 29);
+    color: rgb(255, 255, 255);
+}
+
+#dark-rating.rating-stars {
+    color: rgb(255, 255, 67);
+    font-size: 40px;
+}
+
+#light-rating.rating-stars {
+    color: rgb(255, 255, 85);
+    font-size: 40px;
+}
+
+#light-rating.empty-star {
+    opacity: 1; 
+    color: rgb(200, 200, 200); 
+    font-size: 40px;
+}
+
+#dark-rating.empty-star {
+    opacity: 0.2; 
+    color: white; 
+    font-size: 40px;
+}
+
 .new-rating-screen-wrapper {
     display: flex;
     flex-direction: column;
@@ -12,33 +39,11 @@
     background-color: rgb(255, 255, 255);
 }
 
-.header {
-    display: grid;
-    grid-template-columns: 12% auto;
-    justify-content: flex-start;
-    width: 100%;
-    height: 85px;
-    box-shadow: -10px 12px 12px 0px #d3d3d3;
-}
-
-.header-logo-container {
-    display: flex;
-    height: 60%;
-    align-self: center;
-    align-items: center;
-    font-size: 22px;
-    font-weight: bolder;
-    color: black;
-    grid-column-start: 2;
-    text-decoration: none;
-    justify-content: center;
-}
-
 .form-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 5vh;
+    margin-top: 3rem;
     justify-content: center;
 }
 
@@ -65,17 +70,23 @@
     justify-content: center;
     align-items: center;
     color: black;
-    height: 20vh;
+    height: 15rem;
     width: 50vw;
     background-color: rgb(234, 234, 234);
     margin-bottom: 1rem;
     box-shadow: 1px 1px 6px 0px #616161;
 }
 
+#dark-rating.rating {
+    box-shadow: 2px 2px 8px 2px #0e0e0e;
+}
+
 .text-area {
     max-width: 80%;
     width: 100%;
+    height: 80%;
     margin-top: 1rem;
+    font-size: 20px;
     resize: none;
 }
 
@@ -83,13 +94,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 12vh;
+    height: 8rem;
     width: 50vw;
     margin-bottom: 10vh;
     color: black;
     font-weight: bold;
     background-color: rgb(234, 234, 234);
     box-shadow: 1px 1px 6px 0px #616161;
+}
+
+#dark-rating.submit-container {
+    box-shadow: 2px 2px 8px 2px #0e0e0e;
 }
 
 @media screen and (max-width:800px) {
@@ -99,6 +114,16 @@
 
     .submit-container {
         width: 80vw;
+    }
+
+    .text-area {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width:500px) {
+    .text-area {
+        font-size: 12px;
     }
 }
 

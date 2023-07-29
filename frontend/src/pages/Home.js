@@ -3,16 +3,17 @@ import api from "../api/axiosConfig.js";
 import GooglePlacesAutocomplete from "react-google-places-autocomplete";
 import "../Home.css";
 import { useNavigate } from "react-router-dom";
+import PageHeader from "../components/PageHeader.js";
 
 const Home = () => {
   const [selectedGym, setSelectedGym] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [theme, setTheme] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
     const checkIfGymExistsInDB = async () => {
       try {
-        setIsLoading(true);
         const response = await api.get(
           "/api/v1/gyms/" + selectedGym["value"].place_id
         );
@@ -26,7 +27,6 @@ const Home = () => {
               selectedGym["value"]["structured_formatting"].secondary_text,
           });
         }
-        setIsLoading(false);
         navigate("/gym/" + selectedGym["value"].place_id, {
           state: selectedGym["value"].place_id,
         });
@@ -34,10 +34,13 @@ const Home = () => {
         console.log(error);
       }
     };
-
     checkIfGymExistsInDB();
-    setIsLoading(false);
   }, [selectedGym]);
+
+  const handleSelection = (val) => {
+    setIsLoading(true);
+    setSelectedGym(val);
+  };
 
   const customStyles = {
     option: (defaultStyles) => ({
@@ -56,13 +59,13 @@ const Home = () => {
     singleValue: (defaultStyles) => ({ ...defaultStyles, color: "#fff" }),
   };
 
+  window.addEventListener("storage", (e) => {
+    setTheme(JSON.parse(localStorage.getItem("theme")) + "-home");
+  });
+
   return (
-    <div className="home-screen-wrapper">
-      <div className="header">
-        <a href="/" className="header-logo-container">
-          <text>Rate My Gym</text>
-        </a>
-      </div>
+    <div className="home-screen-wrapper" id={theme}>
+      <PageHeader></PageHeader>
       <div className="background-image">
         <div className="image-overlay">
           <div className="logo-text">
@@ -83,7 +86,9 @@ const Home = () => {
               selectProps={{
                 styles: customStyles,
                 selectedGym,
-                onChange: (val) => setSelectedGym(val),
+                onChange: (val) => {
+                  handleSelection(val);
+                },
                 placeholder: "Search for a gym...",
                 noOptionsMessage: () =>
                   "There are no gyms that match your search :(",
@@ -92,6 +97,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <div className="home-footer" id={theme}></div>
     </div>
   );
 };

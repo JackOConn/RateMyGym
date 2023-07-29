@@ -1,7 +1,8 @@
 .home-screen-wrapper {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 100%;
+    min-height: 100vh;
     width: 100%;
     align-items: center;
     overflow: hidden;
@@ -9,31 +10,20 @@
     background-color: white;
 }
 
-.header {
-    display: grid;
-    grid-template-columns: 12% auto;
-    justify-content: flex-start;
-    width: 100%;
-    height: 85px;
-    box-shadow: -10px 12px 12px 0px #d3d3d3;
-}
-
-.header-logo-container {
-    display: flex;
-    height: 60%;
-    align-items: center;
-    align-self: center;
-    font-size: 22px;
-    font-weight: bolder;
-    color: black;
-    grid-column-start: 2;
-    text-decoration: none;
-    justify-content: center;
+#light-home {
+    background-color: rgb(255, 255, 255);
+  }
+  
+#dark-home {
+    background-color: rgb(29, 29, 29);
+    color: white;
+    
 }
 
 .background-image {
+    z-index: 15;
     width: 100vw;
-    height: 80vh;
+    height: 52rem;
     background-image: url('./images/home-background-image.jpg');
     background-position: center;
     background-size: cover;
@@ -52,7 +42,7 @@
 
 .logo-text {
     width: 100%;
-    margin-bottom: 1vh;
+    margin-bottom: 1.5rem;
     text-align: center;
     font-size: 40px;
 }
@@ -62,9 +52,20 @@
     background-color: white;
 }
 
+.home-footer {
+    height: 85px;
+    background-color: white;
+    width: 100%;
+}
+
+
 @media screen and (max-width: 1120px) {
     .google-search {
         width: 50vw;
+    }
+
+    .background-image {
+        height: 80vh;
     }
 }
 
@@ -72,10 +73,17 @@
     .google-search {
         width: 80vw;
     }
+
     .logo-text {
-        margin-bottom: 2vh;
+        margin-bottom: 2rem;
         font-size: 30px;
     }
     
 }
 
+@media screen and (max-width: 450px) {
+    .background-image {
+        height: 80vh
+    }
+    
+}

@@ -14,42 +14,29 @@
     overflow-x: hidden;
 }
 
-.header {
-    display: grid;
-    grid-template-columns: 12% auto;
-    justify-content: flex-start;
-    width: 100%;
-    height: 85px;
-    box-shadow: -10px 12px 12px 0px #d3d3d3;
+#dark-gym {
+    background-color: rgb(29, 29, 29);
+    color: white;
 }
 
-.header-logo-container {
-    display: flex;
-    height: 60%;
-    align-self: center;
-    align-items: center;
-    font-size: 22px;
-    font-weight: bolder;
-    color: black;
-    grid-column-start: 2;
-    text-decoration: none;
-    justify-content: center;
+#dark-gym.gym-rating-number {
+    background-color:#414141;
 }
+
 
 .gym-information-container {
     display: grid;
     grid-template-columns: 10% 26% 20% 12% 20% auto;
     grid-template-rows: 15% 17.5% 17.5% 17.5% 17.5% 15%; 
-    height: 60vh;
+    height: 42rem;
     width: 70vw;
     align-self: center;
     text-align:start;
-
 }
 
 .gym-name {
     color: black;
-    font-size: 48px;
+    font-size: 56px;
     font-weight: bold;
     align-self: center;
     grid-column-start: 1;
@@ -60,7 +47,7 @@
 
 .gym-location {
     color: black;
-    font-size: 18px;
+    font-size: 20px;
     grid-column-start: 1;
     grid-column-end: 3;
     grid-row-start: 3;
@@ -102,10 +89,10 @@
     align-items: center;
     justify-content: center;
     background: rgb(234, 234, 234);
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
-    height: 3.5rem;
-    width: 3.5rem;
+    height: 4rem;
+    width: 4rem;
     margin-right: 2rem;
 }
 
@@ -188,10 +175,15 @@
     box-shadow: -10px -12px 12px 0px #d3d3d3;
 }
 
+
+#dark-gym.under-gym-information-shadow {
+    box-shadow: -10px -12px 12px 0px #0e0e0e;
+}
+
 .above-ratings-list-bar {
     display: flex;
     align-self: center;
-    height: 5vh;
+    height: 3rem;
     width: 50vw;
     margin-top: 1rem;
     align-items: center;
@@ -206,7 +198,7 @@
     width: 80vw;
     align-self: center;
     text-align:start;
-    margin-top: 5vh;
+    margin-top: 3rem;
 }
 
 .ratings-list {
@@ -226,6 +218,10 @@
     border-radius: 2%;
     box-shadow: 2px 2px 10px 0px #616161;
     margin-bottom: 2rem;
+}
+
+#dark-gym.rating-item-container {
+    box-shadow: 2px 4px 14px 0px #0e0e0e;
 }
 
 .rating-rate-container {
@@ -276,6 +272,10 @@
     color: white;
     height: 3rem;
     width: 3rem;
+}
+
+#dark-gym.rating-rating-number {
+    background-color: #414141;
 }
 
 .rating-machines {
@@ -375,7 +375,7 @@
     align-items: flex-start;
     justify-content: center;
     margin-top: 1rem;
-    height: 10vh;   
+    height: 6rem;   
     color: black;
     font-size: 18px;
 }
@@ -503,7 +503,7 @@
     .above-ratings-list-bar {
         display: flex;
         align-self: center;
-        height: 5vh;
+        height: 4rem;
         width: 80%;
         margin-top: 1rem;
         align-items: center;
@@ -519,12 +519,16 @@
     .gym-information-container {
         width: 95vw;
     }
+    
+    .gym-location {
+        margin-top: 2rem;
+    }
 
     .above-ratings-list-bar {
         display: flex;
         flex-direction: column-reverse;
         align-self: center;
-        height: 15vh;
+        height: 7rem;
         width: 80%;
         align-items: center;
     }
@@ -533,7 +537,6 @@
         width: 100vw;
     }
     
-
     .rating-item-container {
         display: flex;
         flex-direction: column;
@@ -573,43 +576,70 @@
     
     .rating-machines {
         font-size: 24px;
-        width: 90%;
+        width: 70%;
         margin-bottom: 1rem;
     }
     
     .rating-freeweights {
         font-size: 24px;
-        width: 90%;
+        width: 70%;
         margin-top: 1rem;
         margin-bottom: 1rem;
     }
 
     .rating-atmosphere {
         font-size: 24px;
-        width: 90%;
+        width: 70%;
         margin-top: 1rem;
         margin-bottom: 1rem;
     }
 
     .rating-cleanliness {
         font-size: 24px;
-        width: 90%;
+        width: 70%;
         margin-top: 1rem;
         margin-bottom: 1rem;
     }
     
     .rating-staff {
         font-size: 24px;
-        width: 90%;
+        width: 70%;
         margin-top: 1rem;
         margin-bottom: 1rem;
     }
     
     .rating-price {
         font-size: 24px;
-        width: 90%;
+        width: 70%;
         margin-top: 1rem;
         margin-bottom: 3rem;
     }
     
+}
+
+@media screen and (max-width: 500px) {
+    .rating-machines {
+        width: 90%;
+    }
+    
+    .rating-freeweights {
+        width: 90%;
+    }
+
+    .rating-atmosphere {
+        width: 90%;
+    }
+
+    .rating-cleanliness {
+        width: 90%;
+    }
+    
+    .rating-staff {
+        width: 90%;
+    }
+    
+    .rating-price {
+        width: 90%;
+    }
+
 }

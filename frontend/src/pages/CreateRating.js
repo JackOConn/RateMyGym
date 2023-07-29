@@ -6,6 +6,9 @@ import Rating from "@mui/material/Rating";
 import Button from "@mui/material/Button";
 import "../CreateRating.css";
 import { faLocationArrow } from "@fortawesome/free-solid-svg-icons";
+import PageHeader from "../components/PageHeader.js";
+import StarIcon from "@mui/icons-material/StarOutlined.js";
+import { Star } from "@mui/icons-material";
 
 const CreateRating = () => {
   const [gymName, setGymName] = useState("");
@@ -20,15 +23,18 @@ const CreateRating = () => {
   const [ratingBody, setRatingBody] = useState("");
   const [isValid, setIsValid] = useState(false);
   const [alreadyRated, setAlreadyRated] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [theme, setTheme] = useState("");
   const navigate = useNavigate();
   const state = useLocation();
 
   useEffect(() => {
     setGymName(state["state"][0]);
     setGymLocation(state["state"][1]);
-  }, [])
+  }, []);
 
   const handleSubmit = async (event) => {
+    setIsLoading(true);
     event.preventDefault();
     api
       .post("/api/v1/ratings", {
@@ -74,90 +80,124 @@ const CreateRating = () => {
     ratingBody,
   ]);
 
+  window.addEventListener("storage", (e) => {
+    setTheme(JSON.parse(localStorage.getItem("theme")) + "-rating");
+  });
+
   return (
-    <div className="new-rating-screen-wrapper">
-      <div className="header">
-        <a href="/" className="header-logo-container">
-          <text>Rate My Gym</text>
-        </a>
-      </div>
+    <div className="new-rating-screen-wrapper" id={theme}>
+      <PageHeader></PageHeader>
       <div className="form-container">
-        <div className="create-rating-gym-name">{gymName}</div>
-        <div className="create-rating-gym-location"><FontAwesomeIcon icon={faLocationArrow}/> {gymLocation}</div>
+        <div className="create-rating-gym-name" id={theme}>
+          {gymName}
+        </div>
+        <div className="create-rating-gym-location" id={theme}>
+          <FontAwesomeIcon icon={faLocationArrow} /> {gymLocation}
+        </div>
         <form onSubmit={handleSubmit}>
-          <div className="rating">
-            Machines
+          <div className="rating" id={theme}>
+            <text>Machines</text>
             <Rating
+              className="rating-stars"
+              id={theme}
               name="machines-rating"
               defaultValue={0}
               precision={1}
-              size="large"
+              emptyIcon={
+                <StarIcon className="empty-star" id={theme}
+                />
+              }
               onChange={(e) => {
                 setMachinesRating(e.target.value);
               }}
             ></Rating>
           </div>
-          <div className="rating">
+          <div className="rating" id={theme}>
             Free Weights
             <Rating
+              className="rating-stars"
+              id={theme}
               name="free-weights-rating"
               defaultValue={0}
               precision={1}
-              size="large"
+              emptyIcon={
+                <StarIcon className="empty-star" id={theme}
+                />
+              }
               onChange={(e) => {
                 setFreeWeightsRating(e.target.value);
               }}
             ></Rating>
           </div>
-          <div className="rating">
+          <div className="rating" id={theme}>
             Atmosphere
             <Rating
+              className="rating-stars"
+              id={theme}
               name="atmosphere-rating"
               defaultValue={0}
               precision={1}
-              size="large"
+              emptyIcon={
+                <StarIcon className="empty-star" id={theme}
+                />
+              }
               onChange={(e) => {
                 setAtmosphereRating(e.target.value);
               }}
             ></Rating>
           </div>
-          <div className="rating">
+          <div className="rating" id={theme}>
             Cleanliness
             <Rating
+              className="rating-stars"
+              id={theme}
               name="cleanliness-rating"
               defaultValue={0}
               precision={1}
-              size="large"
+              emptyIcon={
+                <StarIcon className="empty-star" id={theme}
+                />
+              }
               onChange={(e) => {
                 setCleanlinessRating(e.target.value);
               }}
             ></Rating>
           </div>
-          <div className="rating">
+          <div className="rating" id={theme}>
             Staff
             <Rating
+              className="rating-stars"
+              id={theme}
               name="staff-rating"
               defaultValue={0}
               precision={1}
-              size="large"
+              emptyIcon={
+                <StarIcon className="empty-star" id={theme}
+                />
+              }
               onChange={(e) => {
                 setStaffRating(e.target.value);
               }}
             ></Rating>
           </div>
-          <div className="rating">
+          <div className="rating" id={theme}>
             Price
             <Rating
+              className="rating-stars"
+              id={theme}
               name="price-rating"
               defaultValue={0}
               precision={1}
-              size="large"
+              emptyIcon={
+                <StarIcon className="empty-star" id={theme}
+                />
+              }
               onChange={(e) => {
                 setPriceRating(e.target.value);
               }}
             ></Rating>
           </div>
-          <div className="rating">
+          <div className="rating" id={theme}>
             <textarea
               className="text-area"
               maxLength={300}
@@ -171,18 +211,18 @@ const CreateRating = () => {
             ></textarea>
             <p color="black">{charCount}/300</p>
           </div>
-          <div className="submit-container">
+          <div className="submit-container" id={theme}>
             {alreadyRated ? (
-              <div>You've already rated this gym</div>
+              <div id={theme}>You've already rated this gym</div>
             ) : (
               <Button
                 disabled={!isValid}
                 type="submit"
                 variant="contained"
                 color="success"
-                size="lg"
+                size="large"
               >
-                Submit
+                {isLoading ? "Loading..." : " Submit "}
               </Button>
             )}
           </div>

@@ -9,6 +9,16 @@ body{
   margin:0;
   overflow-x: hidden;
 }
+
+
+/* #light {
+  background-color: rgb(255, 255, 255);
+}
+
+#dark {
+  background-color: black;
+} */
+
 .App{
   display: flex;
   flex-direction: column;
@@ -16,4 +26,38 @@ body{
   background-color: rgb(255, 255, 255);
   color:white;
   /* margin-top:10px; */
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 12% 44% 32% 12%;
+  justify-content: flex-start;
+  width: 100%;
+  height: 85px;
+  z-index: 10;
+  box-shadow: -10px 12px 12px 0px #d3d3d3;
+}
+
+.header-logo-container {
+  display: flex;
+  height: 60%;
+  align-self: center;
+  align-items: center;
+  font-size: 22px;
+  font-weight: bolder;
+  color: black;
+  grid-column-start: 2;
+  text-decoration: none;
+  justify-content: start;
+}
+
+.header-mode-container {
+  display: flex;
+  height: 60%;
+  /* background-color: black; */
+  align-self: center;
+  align-items: center;
+  grid-row-start: 1;
+  grid-column-start: 3;
+  justify-content: end;
 }

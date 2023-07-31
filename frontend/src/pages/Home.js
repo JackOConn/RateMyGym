@@ -34,6 +34,7 @@ const Home = () => {
         console.log(error);
       }
     };
+    console.log(selectedGym["icon"]);
     checkIfGymExistsInDB();
   }, [selectedGym]);
 

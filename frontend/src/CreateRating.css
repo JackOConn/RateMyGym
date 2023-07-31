@@ -90,6 +90,11 @@
     resize: none;
 }
 
+#dark-rating.text-area {
+    background-color: #272727;
+    border-color: #272727;
+}
+
 .submit-container {
     display: flex;
     justify-content: center;

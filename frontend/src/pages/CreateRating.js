@@ -200,6 +200,7 @@ const CreateRating = () => {
           <div className="rating" id={theme}>
             <textarea
               className="text-area"
+              id={theme}
               maxLength={300}
               placeholder="Describe your reasonings for your ratings (min. of 100 characters)"
               rows={6}

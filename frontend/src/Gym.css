@@ -19,10 +19,6 @@
     color: white;
 }
 
-#dark-gym.gym-rating-number {
-    background-color:#414141;
-}
-
 
 .gym-information-container {
     display: grid;
@@ -95,6 +91,12 @@
     width: 4rem;
     margin-right: 2rem;
 }
+
+
+#dark-gym.gym-rating-number {
+    background-color:#414141;
+}
+
 
 .gym-rating-machines {
     display: flex;
@@ -221,6 +223,7 @@
 }
 
 #dark-gym.rating-item-container {
+    background-color: #272727;
     box-shadow: 2px 4px 14px 0px #0e0e0e;
 }
 
@@ -241,6 +244,10 @@
     grid-row-end: 3;
 }
 
+#dark-gym.rating-rate-container {
+    background-color: #272727;
+}
+
 .rating-rate {
     font-size: 36px;
     font-weight: bold;
@@ -253,6 +260,10 @@
     grid-row-end: 3;
 }
 
+#dark-gym.rating-rate {
+    background-color: #272727;
+}
+
 .rating-body {
     font-size: 20px;
     color: black;
@@ -261,6 +272,10 @@
     grid-column-end: 5;
     grid-row-start: 2;
     grid-row-end: 3;
+}
+
+#dark-gym.rating-body {
+    background-color: #272727;
 }
 
 .rating-rating-number {

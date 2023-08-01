@@ -5,6 +5,7 @@
     max-width: 100vw;
 }
 
+
 .gym-screen-wrapper {
     display: flex;
     flex-direction: column;
@@ -62,6 +63,10 @@
     grid-row-end: 4.5;
 }
 
+/* #ovr-rating-number-3 {
+    color:yellow;
+} */
+
 .gym-rating-overall {
     font-size: 75px;
     font-weight: bold;
@@ -90,13 +95,44 @@
     height: 4rem;
     width: 4rem;
     margin-right: 2rem;
+    box-shadow: 2px 2px 8px -1px;
 }
 
 
-#dark-gym.gym-rating-number {
-    background-color:#414141;
+#rating-number-1 {
+    background-color: rgb(255, 110, 110);
 }
 
+#rating-number-2 {
+    background-color: rgb(255, 179, 71);
+}
+
+#rating-number-3 {
+    background-color: rgb(253, 253, 150);
+}
+
+#rating-number-4 {
+    background-color: rgb(119, 221, 119);
+}
+
+#rating-number-5 {
+    /* background: linear-gradient(-45deg, #fd7af2, #b028fe, #ff0295, #7b14e1); */
+    background: -webkit-linear-gradient(45deg, rgb(226, 12, 151) 0%,rgb(98, 181, 253) 33%, rgb(255, 0, 225) 66%, rgb(0, 255, 166) 100%);
+    background-size: 2000% 2000%;
+    animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 93% 0%;
+	}
+	50% {
+		background-position: 0% 100%;
+	}
+	100% {
+		background-position: 93% 0%;
+	}
+}
 
 .gym-rating-machines {
     display: flex;
@@ -284,9 +320,11 @@
     justify-content: center;
     background: rgb(0, 0, 0);
     font-weight: bold;
-    color: white;
+    color: black;
     height: 3rem;
     width: 3rem;
+    box-shadow: 2px 2px 8px -2px;
+    
 }
 
 #dark-gym.rating-rating-number {
@@ -594,12 +632,20 @@
         width: 70%;
         margin-bottom: 1rem;
     }
+
+    #dark-gym.rating-machines {
+        background-color: #272727;
+    }
     
     .rating-freeweights {
         font-size: 24px;
         width: 70%;
         margin-top: 1rem;
         margin-bottom: 1rem;
+    }
+
+    #dark-gym.rating-freeweights {
+        background-color: #272727;
     }
 
     .rating-atmosphere {
@@ -609,6 +655,10 @@
         margin-bottom: 1rem;
     }
 
+    #dark-gym.rating-atmosphere {
+        background-color: #272727;
+    }
+
     .rating-cleanliness {
         font-size: 24px;
         width: 70%;
@@ -616,11 +666,19 @@
         margin-bottom: 1rem;
     }
     
+    #dark-gym.rating-cleanliness {
+        background-color: #272727;
+    }
+
     .rating-staff {
         font-size: 24px;
         width: 70%;
         margin-top: 1rem;
         margin-bottom: 1rem;
+    }
+
+    #dark-gym.rating-staff {
+        background-color: #272727;
     }
     
     .rating-price {
@@ -628,6 +686,10 @@
         width: 70%;
         margin-top: 1rem;
         margin-bottom: 3rem;
+    }
+
+    #dark-gym.rating-price {
+        background-color: #272727;
     }
     
 }
@@ -658,3 +720,4 @@
     }
 
 }
+  

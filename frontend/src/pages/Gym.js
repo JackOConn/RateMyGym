@@ -117,43 +117,45 @@ const Gym = () => {
         <div className="gym-rating-machines">
           <FontAwesomeIcon className="rating-icons" icon={faGear} id={theme}/>{" "}
           <text className="rating-text" id={theme}>Machines</text>
-          <div className="gym-rating-number-container" id={theme}>
-            <div className="gym-rating-number" id={theme}>{machinesRating}</div>
+          <div className="gym-rating-number-container">
+            <div className="gym-rating-number" id={"rating-number-" + Math.round(machinesRating)}>{machinesRating}</div>
           </div>
         </div>
         <div className="gym-rating-freeweights">
           <FontAwesomeIcon className="rating-icons" icon={faDumbbell} id={theme}/>{" "}
           <text className="rating-text" id={theme}>Free Weights</text>
           <div className="gym-rating-number-container">
-            <div className="gym-rating-number" id={theme}>{freeWeightsRating}</div>
+            <div className="gym-rating-number" id={"rating-number-" + Math.round(freeWeightsRating)}>{freeWeightsRating}</div>
           </div>
         </div>
         <div className="gym-rating-atmosphere">
           <FontAwesomeIcon className="rating-icons" icon={faSun} id={theme}/>{" "}
           <text className="rating-text" id={theme}>Atmosphere</text>
           <div className="gym-rating-number-container">
-            <div className="gym-rating-number" id={theme}>{atmosphereRating}</div>
+            <div className="gym-rating-number" id={"rating-number-" + Math.round(atmosphereRating)}>{atmosphereRating}</div>
           </div>
         </div>
         <div className="gym-rating-cleanliness">
           <FontAwesomeIcon className="rating-icons" icon={faHandSparkles} id={theme}/>{" "}
           <text className="rating-text" id={theme}>Cleanliness</text>
           <div className="gym-rating-number-container">
-            <div className="gym-rating-number" id={theme}>{cleanlinessRating}</div>
+            <div className="gym-rating-number" id={"rating-number-" + Math.round(cleanlinessRating)}>{cleanlinessRating}</div>
           </div>
         </div>
         <div className="gym-rating-staff">
           <FontAwesomeIcon className="rating-icons" icon={faUserTie} id={theme}/>{" "}
           <text className="rating-text" id={theme}>Staff</text>
           <div className="gym-rating-number-container">
-            <div className="gym-rating-number" id={theme}>{staffRating}</div>
+            <div className="gym-rating-number" id={"rating-number-" + Math.round(staffRating)}>{staffRating}</div>
           </div>
         </div>
         <div className="gym-rating-price">
           <FontAwesomeIcon className="rating-icons" icon={faDollarSign} id={theme}/>{" "}
           <text className="rating-text" id={theme}>Price</text>
           <div className="gym-rating-number-container">
-            <div className="gym-rating-number" id={theme}>{priceRating}</div>
+            <div className="gym-rating-number" id={"rating-number-" + Math.round(priceRating)}>
+            <div className="rating-number-shadow"></div>
+              {priceRating}</div>
           </div>
         </div>
       </div>
@@ -186,7 +188,7 @@ const Gym = () => {
                 <FontAwesomeIcon className="rating-icons" icon={faGear} />{" "}
                 <text className="rating-text">Machines</text>
                 <div className="gym-rating-number-container">
-                  <div className="rating-rating-number" id={theme}>
+                  <div className="rating-rating-number" id={"rating-number-" + rating.machinesRating}>
                     {rating.machinesRating}
                   </div>
                 </div>
@@ -195,7 +197,7 @@ const Gym = () => {
                 <FontAwesomeIcon className="rating-icons" icon={faDumbbell} />{" "}
                 <text className="rating-text">Free Weights</text>
                 <div className="gym-rating-number-container">
-                  <div className="rating-rating-number" id={theme}>
+                  <div className="rating-rating-number" id={"rating-number-" + rating.freeWeightsRating}>
                     {rating.freeWeightsRating}
                   </div>
                 </div>
@@ -204,7 +206,7 @@ const Gym = () => {
                 <FontAwesomeIcon className="rating-icons" icon={faSun} />{" "}
                 <text className="rating-text">Atmosphere</text>
                 <div className="gym-rating-number-container">
-                  <div className="rating-rating-number" id={theme}>
+                  <div className="rating-rating-number" id={"rating-number-" + rating.atmosphereRating}>
                     {rating.atmosphereRating}
                   </div>
                 </div>
@@ -216,7 +218,7 @@ const Gym = () => {
                 />{" "}
                 <text className="rating-text">Cleanliness</text>
                 <div className="gym-rating-number-container">
-                  <div className="rating-rating-number" id={theme}>
+                  <div className="rating-rating-number" id={"rating-number-" + rating.cleanlinessRating}>
                     {rating.cleanlinessRating}
                   </div>
                 </div>
@@ -225,7 +227,7 @@ const Gym = () => {
                 <FontAwesomeIcon className="rating-icons" icon={faUserTie} />{" "}
                 <text className="rating-text">Staff</text>
                 <div className="gym-rating-number-container">
-                  <div className="rating-rating-number" id={theme}>
+                  <div className="rating-rating-number" id={"rating-number-" + rating.staffRating}>
                     {rating.staffRating}
                   </div>
                 </div>
@@ -234,7 +236,7 @@ const Gym = () => {
                 <FontAwesomeIcon className="rating-icons" icon={faDollarSign} />{" "}
                 <text className="rating-text">Price</text>
                 <div className="gym-rating-number-container">
-                  <div className="rating-rating-number" id={theme}>
+                  <div className="rating-rating-number" id={"rating-number-" + rating.priceRating}>
                     {rating.priceRating}
                   </div>
                 </div>
